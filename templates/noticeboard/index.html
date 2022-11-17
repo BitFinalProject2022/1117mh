@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+</head>
+<body>
+	<h1 style="text-align:center;">Board</h1>
+        <form name="articleForm" method="post" action = "{% url 'noticeboard:index' %}">
+            {% csrf_token %}
+            <table border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td align="right" class="class-caption">ID:</td>
+                        <td colspan="2"><input {% if not user.is_authenticated %} disabled {% endif %}
+                                               type="text" maxlength="100" class="class-content"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top" class="class-caption"><br>NAME:</td>
+                        <td colspan="2">
+                            <textarea {% if not user.is_authenticated %} disabled {% endif %}
+                                      rows="10" maxlength="100" class="class-content"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top">{{article.test_created}}</td>
+                    </tr>
+                    <tr>
+                        <td align="right"></td>
+                        <td colspan="2">
+                            <input type="file" value="Image"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+</body>
+</html>
